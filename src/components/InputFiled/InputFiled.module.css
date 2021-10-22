@@ -1,0 +1,41 @@
+.inputFiledWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    height: 45px;
+    width: 100%;
+    margin: 20px 0 5px;
+}
+.inputForTasks {
+    outline: none;
+    width: 85%;
+    height: 100%;
+    border: 1px solid #ccc;
+    font-size: 17px;
+    border-radius: 3px;
+    padding-left: 15px;
+}
+.inputFiledButton {
+    width: 60px;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: #8E49E8;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-left: 5px;
+    transition: all .1s ease;
+}
+.inputFiledButton:active {
+    background: #3f2983;
+}
+
+.inputError {
+    border: 2px solid red;
+}
+.errorMessage {
+    color: red;
+}

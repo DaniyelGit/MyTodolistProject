@@ -1,0 +1,118 @@
+.todolistWrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 60px 30px 0px;
+    max-width: 400px;
+    width: 100%;
+    background: #fff;
+    border-radius: 5px;
+    padding: 25px;
+    font-family: sans-serif;
+}
+
+.titleTodolist {
+    font-size: 30px;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+.todolist {
+    max-height: 250px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.todolistWrapper .formForRemoveTodolist {
+    display: flex;
+    align-items: center;
+    height: 45px;
+    width: 100%;
+}
+.formForRemoveTodolist .removeTodolistBtn {
+    width: 60px;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: red;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+.formForRemoveTodolist .removeTodolistBtn:active {
+    color: red;
+    background: #21bda9;
+}
+
+.inputFiled {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+
+.todolist .todolistItem {
+    position: relative;
+    height: 45px;
+    list-style: none;
+    line-height: 45px;
+    background: #f2f2f2;
+    margin-bottom: 8px;
+    padding: 0 10px;
+    cursor: default;
+    overflow: hidden;
+}
+.todolist .todolistItemCompleted {
+    background-color: #21bda9;
+    color: #fff;
+    opacity: .7;
+}
+.todolist .checkboxTask {
+    margin-right: 10px;
+}
+.todolist .btnRemove {
+    position: absolute;
+    right: -45px;
+    color: #fff;
+    font-size: 16px;
+    width: 45px;
+    height: 100%;
+    text-align: center;
+    border-radius: 0 3px 3px 0;
+    background: #e74c3c;
+    cursor: pointer;
+    transition: all .3s ease;
+    border: none;
+}
+.todolist li:hover .btnRemove {
+    right: 0;
+}
+
+.todolistWrapper .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: auto 0 0;
+}
+
+.btnFilter {
+    width: 100%;
+    margin-left: 10px;
+    border: none;
+    outline: none;
+    background: #8E49E8;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 6px 10px;
+    transition: all .1s ease;
+}
+.btnFilter:active {
+    background: #3f2983;
+}
+.footer .btnFilter:nth-child(1) {
+    margin-left: 0;
+}
