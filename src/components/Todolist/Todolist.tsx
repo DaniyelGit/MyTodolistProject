@@ -29,7 +29,6 @@ export const Todolist: React.FC<TodolistPropsType> = (
     }
 ) => {
 
-
     const removeTaskHandler = (taskID: string) => {
         removeTask(taskID, todolistID);
     } // Handler for remove task
