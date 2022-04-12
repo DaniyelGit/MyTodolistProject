@@ -8,14 +8,22 @@ import {
 import {v1} from "uuid";
 import {filterForTodolist, todolistArr} from "../../App";
 
-test('correct todolist should be removed', () => {
-    let todolistID1 = v1();
-    let todolistID2 = v1();
+let todolistID1: string;
+let todolistID2: string;
+let startState: Array<todolistArr>;
 
-    const startState: Array<todolistArr> = [
+beforeEach(() => {
+    todolistID1 = v1();
+    todolistID2 = v1();
+
+    startState = [
         {id: todolistID1, title: 'What to learn', filter: 'all'},
         {id: todolistID2, title: 'What to buy', filter: 'all'},
     ];
+})
+
+
+test('correct todolist should be removed', () => {
 
     const action = removeTodolistAC(todolistID2);
 
@@ -26,16 +34,9 @@ test('correct todolist should be removed', () => {
 })
 
 test('correct todolist should be added', () => {
-    let todolistID1 = v1();
-    let todolistID2 = v1();
 
     const newTodolistTitle = 'Films for viewing';
     let testID = v1();
-
-    const startState: Array<todolistArr> = [
-        {id: todolistID1, title: 'What to learn', filter: 'all'},
-        {id: todolistID2, title: 'What to buy', filter: 'all'},
-    ];
 
     const action = addNewTodolistAC(newTodolistTitle, testID);
 
@@ -47,15 +48,8 @@ test('correct todolist should be added', () => {
 })
 
 test('correct filter todolist should be changed', () => {
-    let todolistID1 = v1();
-    let todolistID2 = v1();
 
     let filter: filterForTodolist = 'active';
-
-    const startState: Array<todolistArr> = [
-        {id: todolistID1, title: 'What to learn', filter: 'all'},
-        {id: todolistID2, title: 'What to buy', filter: 'all'},
-    ];
 
     const action = changeFilterTodolistAC(filter, todolistID2);
 
@@ -66,15 +60,8 @@ test('correct filter todolist should be changed', () => {
 })
 
 test('correct title for todolist should be edit', () => {
-    let todolistID1 = v1();
-    let todolistID2 = v1();
 
     let newTitle = 'What movie to see';
-
-    const startState: Array<todolistArr> = [
-        {id: todolistID1, title: 'What to learn', filter: 'all'},
-        {id: todolistID2, title: 'What to buy', filter: 'all'},
-    ];
 
     const action = editTodolistTitleAC(newTitle, todolistID2);
 

@@ -1,11 +1,12 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from "react";
+import React, {ChangeEvent,} from "react";
 import s from './Todolist.module.css'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes, faTrash,} from "@fortawesome/free-solid-svg-icons";
-import {filterForTodolist, TasksTypeElements} from "../../App";
 import {Button} from "../Button/Button";
 import {InputFiled} from "../InputFiled/InputFiled";
 import {EditSpan} from "../EditSpan/EditSpan";
+import {filterForTodolist} from "../../redux/TodolistReducer/TodolistReducer";
+import {TasksTypeElements} from "../../redux/TaskReducer/TaskReducer";
 
 
 type TodolistPropsType = {
@@ -63,7 +64,7 @@ export const Todolist: React.FC<TodolistPropsType> = (
             <ul className={s.todolist}>
                 {tasks.map(t => {
                     return (
-                        <li className={`${s.todolistItem} ${t.isDone ? s.todolistItemCompleted : ''}`}>
+                        <li key={t.id} className={`${s.todolistItem} ${t.isDone ? s.todolistItemCompleted : ''}`}>
                             <input className={s.checkboxTask}
                                    type={'checkbox'}
                                    checked={t.isDone}

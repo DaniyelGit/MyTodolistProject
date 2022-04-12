@@ -8,7 +8,6 @@ type ButtonPropsType = {
 }
 
 export const Button: React.FC<ButtonPropsType> = ({value, callBack, className}) => {
-
     const clickHandlerForButton = () => callBack();
 
     return (

@@ -4,18 +4,22 @@ import {
     changeTaskStatusAC,
     editTaskTitleAC,
     removeTaskAC, removeTodolistInTasksAC,
-    TaskReducer
+    TaskReducer, TasksType,
 } from './TaskReducer';
 import {v1} from 'uuid';
-import {TasksType} from "../../App";
 
-test('correct todolist should be added in array tasks', () => {
-    let todolistID1 = v1();
-    let todolistID2 = v1();
 
-    let testID = v1();
 
-    const startState: TasksType = {
+let todolistID1: string;
+let todolistID2: string;
+
+let startState: TasksType;
+
+beforeEach(() => {
+    todolistID1 = v1();
+    todolistID2 = v1();
+
+    startState = {
         [todolistID1]: [
             {id: v1(), title: 'HTML&CSS', isDone: true},
             {id: v1(), title: 'NativeJS', isDone: true},
@@ -29,6 +33,12 @@ test('correct todolist should be added in array tasks', () => {
             {id: v1(), title: 'Potatoes', isDone: false},
         ]
     };
+})
+
+
+test('correct todolist should be added in array tasks', () => {
+
+    let testID = v1();
 
     const action = addTodolistInTasksAC(testID);
 
@@ -39,24 +49,6 @@ test('correct todolist should be added in array tasks', () => {
 
 test('correct task should be removed', () => {
 
-    let todolistID1 = v1();
-    let todolistID2 = v1();
-
-    const startState: TasksType = {
-        [todolistID1]: [
-            {id: v1(), title: 'HTML&CSS', isDone: true},
-            {id: v1(), title: 'NativeJS', isDone: true},
-            {id: v1(), title: 'ReactJS', isDone: true},
-            {id: v1(), title: 'Redux', isDone: false},
-        ],
-        [todolistID2]: [
-            {id: v1(), title: 'Milk', isDone: true},
-            {id: v1(), title: 'Eggs', isDone: true},
-            {id: v1(), title: 'Sausage', isDone: false},
-            {id: v1(), title: 'Potatoes', isDone: false},
-        ]
-    };
-
     const action = removeTaskAC(startState[todolistID1][0].id, todolistID1);
 
     const endState = TaskReducer(startState, action);
@@ -66,23 +58,6 @@ test('correct task should be removed', () => {
 })
 
 test('correct task should be edit status', () => {
-    let todolistID1 = v1();
-    let todolistID2 = v1();
-
-    const startState: TasksType = {
-        [todolistID1]: [
-            {id: v1(), title: 'HTML&CSS', isDone: true},
-            {id: v1(), title: 'NativeJS', isDone: true},
-            {id: v1(), title: 'ReactJS', isDone: true},
-            {id: v1(), title: 'Redux', isDone: false},
-        ],
-        [todolistID2]: [
-            {id: v1(), title: 'Milk', isDone: true},
-            {id: v1(), title: 'Eggs', isDone: true},
-            {id: v1(), title: 'Sausage', isDone: false},
-            {id: v1(), title: 'Potatoes', isDone: false},
-        ]
-    };
 
     const action = changeTaskStatusAC(todolistID2, startState[todolistID2][1].id, false);
 
@@ -93,25 +68,8 @@ test('correct task should be edit status', () => {
 })
 
 test('correct task should be added', () => {
-    let todolistID1 = v1();
-    let todolistID2 = v1();
 
     let newTaskTitle = 'TDD';
-
-    const startState: TasksType = {
-        [todolistID1]: [
-            {id: v1(), title: 'HTML&CSS', isDone: true},
-            {id: v1(), title: 'NativeJS', isDone: true},
-            {id: v1(), title: 'ReactJS', isDone: true},
-            {id: v1(), title: 'Redux', isDone: false},
-        ],
-        [todolistID2]: [
-            {id: v1(), title: 'Milk', isDone: true},
-            {id: v1(), title: 'Eggs', isDone: true},
-            {id: v1(), title: 'Sausage', isDone: false},
-            {id: v1(), title: 'Potatoes', isDone: false},
-        ]
-    };
 
     const action = addTaskAC(todolistID1, newTaskTitle);
 
@@ -123,25 +81,8 @@ test('correct task should be added', () => {
 })
 
 test('correct task should be edit title', () => {
-    let todolistID1 = v1();
-    let todolistID2 = v1();
 
     let editTitleTask = 'Vue';
-
-    const startState: TasksType = {
-        [todolistID1]: [
-            {id: v1(), title: 'HTML&CSS', isDone: true},
-            {id: v1(), title: 'NativeJS', isDone: true},
-            {id: v1(), title: 'ReactJS', isDone: false},
-            {id: v1(), title: 'Redux', isDone: false},
-        ],
-        [todolistID2]: [
-            {id: v1(), title: 'Milk', isDone: true},
-            {id: v1(), title: 'Eggs', isDone: true},
-            {id: v1(), title: 'Sausage', isDone: true},
-            {id: v1(), title: 'Potatoes', isDone: false},
-        ]
-    };
 
     const action = editTaskTitleAC(editTitleTask, todolistID1, startState[todolistID1][1].id);
 
@@ -154,23 +95,6 @@ test('correct task should be edit title', () => {
 })
 
 test('correct todolist should be removed in array tasks', () => {
-    let todolistID1 = v1();
-    let todolistID2 = v1();
-
-    const startState: TasksType = {
-        [todolistID1]: [
-            {id: v1(), title: 'HTML&CSS', isDone: true},
-            {id: v1(), title: 'NativeJS', isDone: true},
-            {id: v1(), title: 'ReactJS', isDone: true},
-            {id: v1(), title: 'Redux', isDone: false},
-        ],
-        [todolistID2]: [
-            {id: v1(), title: 'Milk', isDone: true},
-            {id: v1(), title: 'Eggs', isDone: true},
-            {id: v1(), title: 'Sausage', isDone: true},
-            {id: v1(), title: 'Potatoes', isDone: false},
-        ]
-    };
 
     const action = removeTodolistInTasksAC(todolistID1);
 

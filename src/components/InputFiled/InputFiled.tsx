@@ -1,9 +1,10 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from "react";
+import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, KeyboardEvent, useState} from "react";
 import s from './InputFiled.module.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 
-type InputFiledPropsType = {
+
+type InputFiledPropsType =  {
     callBack: (valueInput: string) => void
     placeholder: string
 }
@@ -35,12 +36,13 @@ export const InputFiled: React.FC<InputFiledPropsType> = ({callBack, placeholder
     return (
         <>
             <div className={s.inputFiledWrapper}>
-                <input type="text"
-                       className={`${s.inputForTasks} ${error ? s.inputError : ''}`}
-                       value={valueInput}
-                       placeholder={placeholder}
-                       onChange={changeTitleTaskHandler}
-                       onKeyPress={keyPressOnEnter}
+                <input
+                    type="text"
+                    className={`${s.inputForTasks} ${error ? s.inputError : ''}`}
+                    value={valueInput}
+                    placeholder={placeholder}
+                    onChange={changeTitleTaskHandler}
+                    onKeyPress={keyPressOnEnter}
                 />
                 <button className={s.inputFiledButton} onClick={addNewTaskHandler}>
                     <FontAwesomeIcon icon={faPlus}/>
